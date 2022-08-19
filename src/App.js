@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import LinkBar from "./Components/LinkBar"
+import PasswordModal from "./Components/PasswordModal"
+import ResumeCard from "./Components/ResumeCard"
+import {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [showPwModal, setShowPwModal] = useState(true);
+  const [resumeObject, setResumeObject] = useState({});
+
+  return (<>
+      {showPwModal ? <PasswordModal setResumeObject={setResumeObject} setShowPwModal={setShowPwModal} />: ""}
+      {!showPwModal ? <div><LinkBar /><ResumeCard resumeObject={resumeObject} /></div>: ""}
+  </>);
 }
 
 export default App;
